@@ -1,0 +1,24 @@
+**Cloning the repository**:
+   - git clone https://github.com/frankozu/BurgerLounge.git
+   - This command creates a local copy of the repository.
+
+**Creating a new branch**:
+   - git checkout -b <branch-name>
+   - This command is used to create a new branch for working on a specific feature.
+
+**Staging changes**:
+   - git add .
+   - Stages the changes made to the files.
+
+**Committing changes**:
+   - git commit -m "Description of changes"
+   - Saves the changes with a message explaining what was done.
+
+**Pushing changes**:
+   - git push origin <branch-name>
+   - Pushes the local changes to the GitHub repository.
+
+**Merging changes**:
+   - git checkout main
+   - git merge <branch-name>
+   - Merges the changes from the feature branch back into the main branch.

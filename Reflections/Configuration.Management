@@ -1,0 +1,19 @@
+Configuration management is used to maintain the consistency of a system over time. It involves version control and tracking changes.
+It helps teams to collaborate in a better or more efficient way, like ensuring everyone works on the same version of the project.
+If something bad happens then it allows for an easy recovery and tracking if changes.
+Configuration management is used to:
+- Ensure consistency across environments.
+- Enable multiple people to collaborate on a project.
+- Track changes and maintain a history if the code. 
+
+1. What went well? 
+    - Setting up GitHub and cloning the repository.
+    - Making commits. 
+    - Using branches and resolve conflicts like code errors etc.
+2. What did not go well?
+    - Had issues with personal access token, but it was later on resolved by setting up the recommendations of the token.
+    - Should have organized earlier.  
+3. How did you solve challenges? 
+    - By researching online, asking for help and reading GitHub documentation. 
+4. What did you not manage to solve?
+    - So far, nothing. 

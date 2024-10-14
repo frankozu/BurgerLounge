@@ -1,0 +1,11 @@
+1. I am on my own (no team) since no one answered my message in canvas. Team Members: Franko (frankozu). GitHub Repository: https://github.com/frankozu/BurgerLounge
+2. I have chosen Ubuntu and Visual Studio Code, and set up GitHub as my repository. Using python virtual environment.
+3. I've set up a Git server. The repository name is BurgerLounge.
+4. The description of the project is added on README.md
+5. I have created Planning directory for Goods.
+6. I created the Reflections directory for Engineering Diary. 
+7. I've done initial setup, installing Flask, etc. 
+8. Wrote a summary about what Configuration Managment is and why it is used.
+9. Wrote a summary about what the most common git workflow and commands are used.
+10. Added text files for hamburgers, drinks and condiments in the Planning directory. Used mkdir and touch to create files. No challenges faced. 
+11. 
