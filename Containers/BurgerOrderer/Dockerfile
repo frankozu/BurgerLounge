@@ -8,7 +8,7 @@ WORKDIR /app
 COPY . .
 
 # Install the required Python packages
-RUN pip install -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
 # Expose port 5000 to access the application
 EXPOSE 5000
