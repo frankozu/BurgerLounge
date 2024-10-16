@@ -6,10 +6,14 @@ app = Flask(__name__)
 
 # This function will connect to the SQLite database for MenuStore
 def get_db_connection():
-    db_path = os.path.join(os.path.dirname(__file__), '../MenuStore/menu.db')
-    conn = sqlite3.connect(db_path)
-    conn.row_factory = sqlite3.Row
-    return conn
+    try:
+        db_path = os.path.join(os.path.dirname(__file__), '../MenuStore/menu.db')
+        conn = sqlite3.connect(db_path)
+        conn.row_factory = sqlite3.Row
+        return conn
+    except sqlite3.Error as e:
+        app.logger.error(f"Database connection failed: {str(e)}")
+        return None
 
 # Root path to show a welcome message
 @app.route('/')
