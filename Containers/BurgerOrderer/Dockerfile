@@ -1,0 +1,17 @@
+# Use Python 3.10 as the base image
+FROM python:3.10-slim
+
+# Set the working directory inside the container
+WORKDIR /app
+
+# Copy the project files into the container
+COPY . .
+
+# Install the required Python packages
+RUN pip install -r requirements.txt
+
+# Expose port 5000 to access the application
+EXPOSE 5000
+
+# Command to run the application
+CMD ["python", "app.py"]
