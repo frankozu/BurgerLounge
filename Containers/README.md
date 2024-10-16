@@ -19,6 +19,9 @@ docker-compose down
 BurgerOrderer: http://localhost:5000
 KitchenView: http://localhost:5001
 
+# burgerorderer/kitchenview/menustore    |  * Running on http://127.0.0.1:5000/5001/5002
+# burgerorderer/kitchenview/menustore    |  * Running on http://172.18.0.3:5000/5001/5002
+
 ## How to Run
 ### 1. Clone the repository
 ```bash
