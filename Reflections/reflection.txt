@@ -1,0 +1,92 @@
+Team Members:
+    - Franko Toma (frankozu)
+
+Project Homepage:
+    - https://github.com/frankozu/BurgerLounge
+
+Project Summary:
+
+    Project as a Whole:
+    
+    - This project was about creating a system to manage burger orders. 
+    It allows customers to customize their orders and view the menu, 
+    while the kitchen gets a separate view to see incoming orders. 
+    We used Docker to keep everything organized, with different parts handling customer orders, 
+    managing the menu from the database, and showing the kitchen what to prepare.
+
+    Each Container:
+
+    - BurgerOrderer: This part of the system is for customers. It lets them see the menu, place orders, 
+    and customize their orders (like removing toppings). 
+    It gets menu items from the MenuStore and takes orders through a REST API.
+    
+    - MenuStore: This container handles storing and getting data about burgers, condiments, and drinks. 
+    It uses an SQLite database and sends menu information to the BurgerOrderer container.
+    
+    - KitchenView: This container gets orders from BurgerOrderer through a REST API and shows them to the kitchen staff. 
+    For simplicity, the orders are displayed on the screen.
+
+    Each Module: 
+
+    - Order Handling: The BurgerOrderer module is built with Flask and has two main routes: 
+    /menu, which shows the available burgers, drinks, and condiments, 
+    and /order, which lets customers place and log their orders.
+
+    - Database Management: The MenuStore module uses SQLite to store information about different burgers, condiments, and drinks. 
+    The data is organized in SQL tables, and Flask retrieves it to show in the /menu route.
+
+Project Experience:
+
+    What went well:
+        - Setting up the basic Flask app and configuring the SQLite database was easy. 
+        The /menu and /order routes worked well after adding logging and handling JSON responses.
+
+        - Using Docker made it easier to manage the different parts of the system, 
+        and setting up Dockerfiles for each service was pretty simple.
+
+    What did not go well:
+        - There were problems getting the Flask app to run because the app.run() statement was missing, 
+        and there were some network issues when using curl to test the endpoints.
+        Issue fix: To fix the Flask startup issue, I learned to debug by checking the app structure and logs. 
+        I found that the missing app.run() was stopping the server from starting.
+
+        - There were some small issues when linking MenuStore with BurgerOrderer, especially with connecting the SQLite database across containers. 
+        These were fixed by setting the correct file paths and making sure the Docker containers were properly connected.
+
+        - Had an issue with testing POST requests when using curl and it was fixed by making sure the Flask was running correctly and to open up a second terminal. 
+
+    What could be done differently: 
+        - More time could have been spent planning the network setup between containers.
+        A better design from the start could have saved time troubleshooting the connection between MenuStore and BurgerOrderer.
+
+    What did I not manage to solve:
+        - There were no major unsolved issues by the end of the project. 
+        However, more features could be added later, like better error handling and marking orders as "complete" in the kitchen view.
+
+Experience working with containers: 
+
+    What went well:
+        - Setting up Docker containers for BurgerOrderer and MenuStore was easy. 
+        Keeping the components in separate containers made testing and deployment simpler.
+        - Docker made it easier to manage dependencies and environment settings, 
+        ensuring a smooth development process without conflicts between package versions or system dependencies.
+
+    What did not go well:
+        - The initial setup of Docker for managing SQLite file paths between containers was a bit challenging. 
+        It took a few tries to correctly mount the volumes for the database file.
+
+
+    How I solved challenges:
+        - The Docker networking issue was fixed by adjusting the Docker Compose setup to make sure the containers could communicate through internal networking.
+        - Setting up volumes carefully was needed to make sure the SQLite database could be accessed by all services and data was saved between containers.
+
+    What could be done differently:
+        - A better understanding of Docker Compose early could have prevented the early problems with container networking. 
+        - Testing container dependencies and environment variables more thoroughly at the beginning would have caught some issues earlier.
+
+    What did I not manage to solve:
+        - I fixed most container related issues, but there are still optimizations to make, 
+        especially for automating builds and making sure deployments run smoothly in a production environment.
+
+
+
