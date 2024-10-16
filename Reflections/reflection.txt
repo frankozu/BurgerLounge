@@ -11,7 +11,7 @@ Project Summary:
     - This project was about creating a system to manage burger orders. 
     It allows customers to customize their orders and view the menu, 
     while the kitchen gets a separate view to see incoming orders. 
-    We used Docker to keep everything organized, with different parts handling customer orders, 
+    I used Docker to keep everything organized, with different parts handling customer orders, 
     managing the menu from the database, and showing the kitchen what to prepare.
 
     Each Container:
