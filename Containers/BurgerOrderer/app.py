@@ -18,7 +18,7 @@ def get_db_connection():
 # Root path to show a welcome message
 @app.route('/')
 def home():
-    return "Welcome to BurgerOrderer! Use /menu to view the menu."
+    return "Welcome to BurgerLounge! Use /menu to view the menu."
 
 # Getting all the menu items
 @app.route('/menu', methods=['GET'])
