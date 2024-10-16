@@ -1,70 +1,46 @@
 import sqlite3
 import os
 
-# Setting path to the database
+# Setting the path to the SQLite database
 db_path = os.path.join(os.path.dirname(__file__), 'menu.db')
 
 # Connect to the SQLite database
-conn = sqlite3.connect(db_path)
-cursor = conn.cursor()
+with sqlite3.connect(db_path) as conn:
+    cursor = conn.cursor()
+    print(f"Connected to database at: {db_path}")
 
-print(f"Connected to database at: {db_path}")
+    # Function to create tables
+    def create_table(table_name, fields):
+        cursor.execute(f'''
+            CREATE TABLE IF NOT EXISTS {table_name} (
+                {fields}
+            )
+        ''')
+        print(f"{table_name.capitalize()} table created or already exists.")
 
-# Create burgers table
-cursor.execute('''
-    CREATE TABLE IF NOT EXISTS burgers (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        name TEXT,
-        price REAL
-    )
-''')
-print("Burgers table created or already exists.")
+    # Function to insert data if table is empty
+    def insert_data_if_empty(table_name, data):
+        cursor.execute(f'SELECT COUNT(*) FROM {table_name}')
+        if cursor.fetchone()[0] == 0:
+            cursor.executemany(f'INSERT INTO {table_name} (name, price) VALUES (?, ?)', data)
+            print(f"Inserted data into {table_name} table.")
+        else:
+            print(f"{table_name.capitalize()} table already has data.")
 
-# Create condiments table
-cursor.execute('''
-    CREATE TABLE IF NOT EXISTS condiments (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        name TEXT,
-        price REAL
-    )
-''')
-print("Condiments table created or already exists.")
+    # Create tables
+    create_table('burgers', 'id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, price REAL')
+    create_table('condiments', 'id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, price REAL')
+    create_table('drinks', 'id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, price REAL')
 
-# Create drinks table
-cursor.execute('''
-    CREATE TABLE IF NOT EXISTS drinks (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        name TEXT,
-        price REAL
-    )
-''')
-print("Drinks table created or already exists.")
+    # Define initial data
+    burgers = [('Cheeseburger', 4.99), ('Veggie Burger', 3.99)]
+    condiments = [('Ketchup', 0.50), ('Mustard', 0.50)]
+    drinks = [('Cola', 1.99), ('Water', 1.00)]
 
-# Insert data only if the tables are empty
-cursor.execute('SELECT COUNT(*) FROM burgers')
-if cursor.fetchone()[0] == 0:
-    cursor.execute("INSERT INTO burgers (name, price) VALUES ('Cheeseburger', 4.99)")
-    cursor.execute("INSERT INTO burgers (name, price) VALUES ('Veggie Burger', 3.99)")
-    print("Inserted data into burgers table.")
-else:
-    print("Burgers table already has data.")
+    # Insert initial data
+    insert_data_if_empty('burgers', burgers)
+    insert_data_if_empty('condiments', condiments)
+    insert_data_if_empty('drinks', drinks)
 
-cursor.execute('SELECT COUNT(*) FROM condiments')
-if cursor.fetchone()[0] == 0:
-    cursor.execute("INSERT INTO condiments (name, price) VALUES ('Ketchup', 0.50)")
-    cursor.execute("INSERT INTO condiments (name, price) VALUES ('Mustard', 0.50)")
-    print("Inserted data into condiments table.")
-else:
-    print("Condiments table already has data.")
-
-cursor.execute('SELECT COUNT(*) FROM drinks')
-if cursor.fetchone()[0] == 0:
-    cursor.execute("INSERT INTO drinks (name, price) VALUES ('Cola', 1.99)")
-    cursor.execute("INSERT INTO drinks (name, price) VALUES ('Water', 1.00)")
-    print("Inserted data into drinks table.")
-else:
-    print("Drinks table already has data.")
-
-conn.commit()
-conn.close()
-print("Database operations complete and connection closed.")
+    print("Database operations complete.")
+    

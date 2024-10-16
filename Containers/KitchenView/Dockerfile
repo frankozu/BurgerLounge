@@ -1,16 +1,16 @@
-# KitchenView Dockerfile
+# Use Python 3.10 as the base image
 FROM python:3.10-slim
 
-# Set working directory
+# Set the working directory
 WORKDIR /app
 
 # Copy the project files
 COPY . .
 
-# Install required Python packages (Flask for API handling)
-RUN pip install --no-cache-dir -r requirements.txt
+# Install required Python packages
+RUN pip install Flask
 
-# Expose port 5001 for the KitchenView app
+# Expose port 5001 for KitchenView
 EXPOSE 5001
 
 # Command to run the app

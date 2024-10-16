@@ -4,24 +4,33 @@ services:
     build: ./BurgerOrderer
     ports:
       - "5000:5000"
-    volumes:
-      - ./BurgerOrderer:/app
     container_name: burgerorderer
+    depends_on:
+      - menustore
+    networks:
+      - app-network
 
   kitchenview:
     build: ./KitchenView
     ports:
       - "5001:5001"
-    volumes:
-      - ./KitchenView:/app
     container_name: kitchenview
+    networks:
+      - app-network
 
   menustore:
     build: ./MenuStore
     volumes:
       - ./MenuStore:/app
-      - ./MenuStore/menu.db:/app/menu.db  # Persist data between container restarts.
+      - ./MenuStore/menu.db:/app/menu.db  # Persist data between container restarts
     container_name: menustore
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
 
 
 # Build and run BurgerOrderer on port 5000 / Build and run KitchenView on port 5001.
