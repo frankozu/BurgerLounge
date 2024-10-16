@@ -12,6 +12,8 @@ The main components are:
 
 ## How to set up and run Docker
 docker-compose up --build
+## To Stop the containers:
+docker-compose down
 
 ## The system will be available on 
 BurgerOrderer: http://localhost:5000
