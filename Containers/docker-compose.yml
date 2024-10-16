@@ -16,6 +16,14 @@ services:
       - ./KitchenView:/app
     container_name: kitchenview
 
+  menustore:
+    build: ./MenuStore
+    volumes:
+      - ./MenuStore:/app
+      - ./MenuStore/menu.db:/app/menu.db  # Persist data between container restarts.
+    container_name: menustore
+
+
 # Build and run BurgerOrderer on port 5000 / Build and run KitchenView on port 5001.
 # To build and start the containers: docker-compose up --build
 # To stop containers: docker-compose down

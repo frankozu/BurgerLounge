@@ -1,7 +1,7 @@
 import sqlite3
 import os
 
-# Set the correct path to the database
+# Setting path to the database
 db_path = os.path.join(os.path.dirname(__file__), 'menu.db')
 
 # Connect to the SQLite database

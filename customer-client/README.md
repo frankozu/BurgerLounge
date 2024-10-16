@@ -1,12 +1,15 @@
-1. **Project Overview**: Briefly describe the purpose of the project.
-2. **Components**: Break down the project into its different parts (backend, customer client, kitchen client).
-3. **Getting Started**: Provide step-by-step instructions for setting up the project (cloning the repository, setting up virtual environments, installing dependencies).
-4. **API Endpoints**: List the main API endpoints of the backend and what they do.
-5. **Folder Structure**: Show a visual representation of the project structure.
-6. **Future Features**: Add placeholders for features that you plan to implement in the future (like the web clients).
+# BurgerLounge - Customer Client
 
-### Save and Commit Changes
+## Project Overview
+This project lets customers see the menu and order burgers, condiments, and drinks. It’s part of the BurgerLounge system, which includes both a customer app and a kitchen interface.
 
-Once you’ve added this information to the `README.md` and made any necessary adjustments, save the file in VS Code (`Ctrl + S` or `Cmd + S` on Mac).
+## Components
+- **Backend (BurgerOrderer)**: Handles the logic for getting menu items and processing customer orders.
+- **Customer Client**: Allows customers to interact with the menu and customize their orders.
+- **Kitchen Client**: Shows incoming orders to the kitchen staff.
 
-#### Commit and Push the Updated README.md:
+## Getting Started
+
+### Clone the repository:
+```bash
+git clone https://github.com/frankozu/BurgerLounge.git

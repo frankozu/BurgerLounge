@@ -8,7 +8,7 @@ WORKDIR /app
 COPY . .
 
 # Install required Python packages (Flask for API handling)
-RUN pip install -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
 # Expose port 5001 for the KitchenView app
 EXPOSE 5001
