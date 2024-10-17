@@ -6,10 +6,10 @@ A system for ordering and managing burger orders for customers and kitchen staff
    - A Python Flask-based backend to manage burger orders.
    - Provides RESTful API endpoints for creating and managing orders.
 
-2. **Customer Client** (To be implemented):
+2. **Customer Client**:
    - A web client for customers to place burger orders.
 
-3. **Kitchen Client** (To be implemented):
+3. **Kitchen Client**:
    - A web client for kitchen staff to manage and track orders.
 
 ## Getting Started
