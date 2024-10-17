@@ -4,6 +4,11 @@ app = Flask(__name__)
 
 orders_received = []
 
+# Root route to show a simple message
+@app.route('/')
+def home():
+    return "Welcome to KitchenView!"
+
 # Route to receive orders
 @app.route('/order', methods=['POST'])
 def receive_order():

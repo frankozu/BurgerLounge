@@ -14,7 +14,6 @@ A system for ordering and managing burger orders for customers and kitchen staff
 
 ## Getting Started
 
-### Prerequisites
 
 Make sure you have the following installed on your local machine:
 - **Python 3.x**

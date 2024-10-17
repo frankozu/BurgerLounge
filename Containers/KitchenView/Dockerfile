@@ -14,4 +14,4 @@ RUN pip install Flask
 EXPOSE 5001
 
 # Command to run the app
-CMD ["python", "app.py"]
+CMD ["python", "appk.py"]

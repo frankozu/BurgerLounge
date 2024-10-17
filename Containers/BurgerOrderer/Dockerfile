@@ -15,3 +15,10 @@ EXPOSE 5000
 
 # Command to run the application
 CMD ["python", "app.py"]
+
+#Adding pytest to test using pytest
+RUN pip install pytest
+
+
+#burgerorderer    |  * Running on http://127.0.0.1:5000
+# burgerorderer    |  * Running on http://172.18.0.3:5000

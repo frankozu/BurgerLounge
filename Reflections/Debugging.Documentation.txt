@@ -1,0 +1,50 @@
+BurgerOrderer app.py
+
+    Line 86:  Inside the place_order function, just after receiving the JSON request (order_data = request.get_json()). 
+    The purpose was to inspect the incoming order data and ensure it's correctly parsed.
+        pdb.set_trace()  # Breakpoint to start the debug session here
+        app.logger.info(f"Raw request data: {request.data}")
+        order_data = request.get_json()  # Investigating incoming order data
+    
+    Line 92: Before forwarding the order to KitchenView, have to ensure the outgoing request contains valid data: 
+        response = requests.post(kitchen_view_url, json=order_data)  # Monitoring the forwarded request
+    
+    # These breakpoints allowed me to follow the flow of the program as it handled the order and forwarded it to KitchenView.
+
+    Monitoring the Variables: 
+        request.data: Data coming from the client-side. 
+            Value: {'burger': 'Dripping With Lard Heartstopper', 'drink': 'Cola'}
+        - This was to ensure that the order data sent from the client was received correctly.
+
+        order_data: The JSON data.
+            Value: {'burger': 'Dripping With Lard Heartstopper', 'drink': 'Cola'}
+        - REason was to ensure that the incomiung data from request.data is correctly parsed into the order_data dictionary. 
+        The "Response" after forwarding the order to KitchenView:
+            Value: Response(status_code=200)
+        - Reason was to ensure the order was forwarded without any issues, and to see if failures occured in communication between BurgerOrderer and KitchenView. 
+
+    Step-Through Process
+        Continue (c): After the breakpoint was set, I used the c command to proceed through the execution until the breakpoint
+        was hit.
+        Step Into (s): I used s to inspect the internal functions of Flask (e.g., get_json() method) to see how the JSON parsing was working 
+        and to verifythat no errors occured.
+        Step over (n): Used n to skip unnecessary details, like requests, so that I could focus on the main logic of my application. 
+        Step out (r): r was to return to my code once i verified every was working correctly.
+
+    Observing variable changes: Using pdb tp watch variable at various points in the function. 
+        Vefore JSON parsing: I watched the request.data to ensure it matched the client's POST request. 
+        After JSON parsing: I watched the order_data to ensure the JSON was parsed correctly and contained the ecpected values. 
+        Forwarding Order to KitchenView: I inspected tje response variable after sending the order to the KitchenView service.
+        I monitored the response status code to ensure the forward request was successfil. 
+
+    Different Orders: 
+        By submitting different orders I could veirify that the app correctly handled various type of input (e.g., different burger and drink combinations).
+            Result: The order_data was updated correctly, and the order was successfully forwarded to KitchenView.
+        By submitting incomplete orders  (e.g., missing drink or burger) to observe the behavior.
+            Result: The app gave errors and the order wasn't forwarded. 
+
+    - What went well?: 
+        The pdb debugger allowed me to inspect incoming and outgoing data easily.
+        The app handled valid and invalid requests as expected, with appropriate error messages when something went wrong.
+    - What was difficult?: 
+        Handling errors between BurgerOrderer and KitchenView. Had to carefully observe the response object and its status code. 

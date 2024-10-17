@@ -6,11 +6,16 @@ services:
       - "5000:5000"
     volumes:
       - ./BurgerOrderer:/app
-      - ./MenuStore/menu.db:/app/menu.db  # Share the database file from MenuStore
+      - ./MenuStore/menu.db:/app/menu.db
+    environment:
+      - FLASK_APP=app.py
+      - FLASK_ENV=development  #to ensure the app runs in debug mode
     container_name: burgerorderer
+
 
   kitchenview:
     build: ./KitchenView
+    command: python appk.py  
     ports:
       - "5001:5001"
     volumes:
@@ -21,8 +26,9 @@ services:
     build: ./MenuStore
     volumes:
       - ./MenuStore:/app
-      - ./MenuStore/menu.db:/app/menu.db  # Persist data between container restarts
+      - ./MenuStore/menu.db:/app/menu.db
     container_name: menustore
+
 
 
 
