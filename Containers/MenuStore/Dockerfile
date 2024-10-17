@@ -1,4 +1,3 @@
-# Use Python 3.10 as the base image
 FROM python:3.10-slim
 
 # Set the working directory inside the container
@@ -11,7 +10,7 @@ COPY . .
 
 #installing flask that keeps running like the other containers
 RUN pip install Flask
-# Expose port 5002 for MenuStore (if needed)
+# Expose port 5002 for MenuStore
 EXPOSE 5002
 
 # Command to run the menu initialization script

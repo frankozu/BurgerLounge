@@ -15,6 +15,6 @@ A system for ordering and managing burger orders for customers and kitchen staff
 ## Getting Started
 
 
-Make sure you have the following installed on your local machine:
+Making sure following are installed on local machine:
 - **Python 3.x**
 - **Flask** (for the backend API)

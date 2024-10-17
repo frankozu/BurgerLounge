@@ -1,4 +1,3 @@
-# Use Python 3.10 as the base image
 FROM python:3.10-slim
 
 # Set the working directory inside the container
@@ -20,5 +19,5 @@ CMD ["python", "app.py"]
 RUN pip install pytest
 
 
-#burgerorderer    |  * Running on http://127.0.0.1:5000
-# burgerorderer    |  * Running on http://172.18.0.3:5000
+#burgerorderer    |  * Running on http://IP:5000
+# burgerorderer    |  * Running on http://IP:5000
