@@ -1,10 +1,73 @@
+Team Members: I am on my own (no team) since no one answered my message in Canvas.
+    - Team Members: Franko (frankozu)
+    - GitHub Repository: https://github.com/frankozu/BurgerLounge
+
+Development Environment:
+
+Operating System: Ubuntu
+Editor: Visual Studio Code
+Version Control: GitHub repository
+Virtual Environment: Python virtual environment setup
+
+Created the Planning directory for categorizing goods like hamburgers, drinks, and condiments.
+Used mkdir and touch to create text files for different goods without facing any issues.
+
+Created a Reflections directory to store my engineering diary.
+
+Installed Flask and set up a Python virtual environment.
+Created the initial Flask app (app.py) with routes for /menu (GET) and /order (POST).
+
+What Went Well:
+Setting up GitHub, cloning the repository, and creating initial commits went smoothly.
+The Flask setup for the basic routes worked well after debugging initial errors.
+Using branches in Git and making commits regularly kept the project organized.
+
+Challenges with Flask:
+Initially forgot to include app.run() in Flask, which prevented the application from starting. This was resolved by adding the statement.
+Encountered "connection refused" errors when testing the /order POST route via curl.
+Solved this by running Flask on the correct IP and port and testing curl in a separate terminal.
+Initially had trouble with my Git personal access token but resolved it by following the recommended setup guidelines.
+
+What I Learned:
+Learned how to clone a repository, create branches, stage changes, commit them with meaningful messages, and push them to the repository.
+Gained experience resolving conflicts and merging branches back into the main branch.
+Learned that configuration management ensures consistency across environments, allows for collaboration, and helps with tracking changes for easy recovery.
+Gained insight into testing API routes with curl, logging incoming requests, and fixing network-related issues in Flask applications.
+
 Configuration management is used to maintain the consistency of a system over time. It involves version control and tracking changes.
 It helps teams to collaborate in a better or more efficient way, like ensuring everyone works on the same version of the project.
-If something bad happens then it allows for an easy recovery and tracking if changes.
+If something bad happens then it allows for an easy recovery and tracking of changes.
 Configuration management is used to:
 - Ensure consistency across environments.
 - Enable multiple people to collaborate on a project.
 - Track changes and maintain a history if the code. 
+
+Most used git-workoverflow:
+
+**Cloning the repository**:
+   - git clone https://github.com/frankozu/BurgerLounge.git
+   - This command creates a local copy of the repository.
+
+**Creating a new branch**:
+   - git checkout -b <branch-name>
+   - This command is used to create a new branch for working on a specific feature.
+
+**Staging changes**:
+   - git add .
+   - Stages the changes made to the files.
+
+**Committing changes**:
+   - git commit -m "Description of changes"
+   - Saves the changes with a message explaining what was done.
+
+**Pushing changes**:
+   - git push origin <branch-name>
+   - Pushes the local changes to the GitHub repository.
+
+**Merging changes**:
+   - git checkout main
+   - git merge <branch-name>
+   - Merges the changes from the feature branch back into the main branch.
 
 1. What went well? 
     - Setting up GitHub and cloning the repository.

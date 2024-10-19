@@ -13,6 +13,9 @@ Project Summary:
     while the kitchen gets a separate view to see incoming orders. 
     I used Docker to keep everything organized, with different parts handling customer orders, 
     managing the menu from the database, and showing the kitchen what to prepare.
+    - Created Dockerfiles for each service such as BurgerOrderer, KitchenView and MenuStore
+    - Created docker-compose.yml to define the services for BurgerOrderer, KitchenView, and MenuStore.
+    - Set up each service with its own port and volume mappings to share the database between containers.
 
     Each Container:
 
@@ -26,12 +29,20 @@ Project Summary:
     - KitchenView: This container gets orders from BurgerOrderer through a REST API and shows them to the kitchen staff. 
     For simplicity, the orders are displayed on the screen.
 
+    Tested that each container starts properly and that the services work together (e.g., BurgerOrderer connects to MenuStore successfully).
+
+    Testing and Debugging:
+
+    - Tested API routes using curl and a browser to verify connectivity.
+    - Ensured that the /order POST route accepts and processes requests correctly.
+    - Created test files for KitchenView, BurgerOrderer, and MenuStore to ensure each part of the system had its own tests, simplifying debugging and maintaining the code.
+    - Used pdb to debug the app in Docker by setting breakpoints, inspecting variables, and fixing issues, especially in the /order route.
+    
     Each Module: 
 
     - Order Handling: The BurgerOrderer module is built with Flask and has two main routes: 
-    /menu, which shows the available burgers, drinks, and condiments, 
-    and /order, which lets customers place and log their orders.
-
+    /menu(GET), which shows the available burgers, drinks, and condiments. It retrieves data from MenuStore (SQLite database) and returns it as JSON.
+    and /order(POST), which lets customers place and log their orders. - Accepts customer orders as JSON, logs the request, and returns the order confirmation.
     - Database Management: The MenuStore module uses SQLite to store information about different burgers, condiments, and drinks. 
     The data is organized in SQL tables, and Flask retrieves it to show in the /menu route.
 
@@ -39,8 +50,8 @@ Project Experience:
 
     What went well:
         - Setting up the basic Flask app and configuring the SQLite database was easy. 
-        The /menu and /order routes worked well after adding logging and handling JSON responses.
-
+        The /menu(GET) and /order(POST)routes worked well after adding logging and handling JSON responses.
+        - Regular commits allow tracking progress and troubleshooting issues.
         - Using Docker made it easier to manage the different parts of the system, 
         and setting up Dockerfiles for each service was pretty simple.
 
@@ -49,13 +60,12 @@ Project Experience:
         and there were some network issues when using curl to test the endpoints.
         Issue fix: To fix the Flask startup issue, I learned to debug by checking the app structure and logs. 
         I found that the missing app.run() was stopping the server from starting.
-
+         - Encountered “connection refused” errors when testing the POST request using curl. 
+        Resolved this by ensuring Flask was running on the correct IP and port, and by running curl in a separate terminal.
         - There were some small issues when linking MenuStore with BurgerOrderer, especially with connecting the SQLite database across containers. 
         These were fixed by setting the correct file paths and making sure the Docker containers were properly connected.
-
-        - Had an issue with testing POST requests when using curl and it was fixed by making sure the Flask was running correctly and to open up a second terminal. 
-
-    What could be done differently: 
+    
+     What could be done differently: 
         - More time could have been spent planning the network setup between containers.
         A better design from the start could have saved time troubleshooting the connection between MenuStore and BurgerOrderer.
 
@@ -63,30 +73,15 @@ Project Experience:
         - There were no major unsolved issues by the end of the project. 
         However, more features could be added later, like better error handling and marking orders as "complete" in the kitchen view.
 
-Experience working with containers: 
-
-    What went well:
-        - Setting up Docker containers for BurgerOrderer and MenuStore was easy. 
+    What I learned:
+        - Importance of logging in Flask to track incoming requests.
+        - Using curl to test API endpoints and debug network issues.
+        - Flask’s 0.0.0.0 binding allows it to listen on all network interfaces.
+        - Set up Docker containers for BurgerOrderer and connected it with the MenuStore database. 
         Keeping the components in separate containers made testing and deployment simpler.
-        - Docker made it easier to manage dependencies and environment settings, 
-        ensuring a smooth development process without conflicts between package versions or system dependencies.
+        - Containerization with Docker simplifies service management.
+        Learned the importance of testing API endpoints from both local machines and external tools (like Postman).
 
-    What did not go well:
-        - The initial setup of Docker for managing SQLite file paths between containers was a bit challenging. 
-        It took a few tries to correctly mount the volumes for the database file.
-
-
-    How I solved challenges:
-        - The Docker networking issue was fixed by adjusting the Docker Compose setup to make sure the containers could communicate through internal networking.
-        - Setting up volumes carefully was needed to make sure the SQLite database could be accessed by all services and data was saved between containers.
-
-    What could be done differently:
-        - A better understanding of Docker Compose early could have prevented the early problems with container networking. 
-        - Testing container dependencies and environment variables more thoroughly at the beginning would have caught some issues earlier.
-
-    What did I not manage to solve:
-        - I fixed most container related issues, but there are still optimizations to make, 
-        especially for automating builds and making sure deployments run smoothly in a production environment.
-
-
+## Place an order in a second terminal (the first terminal should be open with docker-compose up --build):
+curl -X POST http://YOUR-IP:5000/order -H "Content-Type: application/json" -d '{"burger": "Cheeseburger", "drink": "Cola"}'
 

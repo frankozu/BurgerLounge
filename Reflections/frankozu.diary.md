@@ -74,10 +74,7 @@ Docker and Containers:
     What I learned:
         - I gained experience in managing Docker services and connecting them using volumes and networks.
         - I learned how to troubleshoot common Docker issues, like networking and container startup problems.
-    
-Running tests in Docker:
-    - Pytest wasn’t working in the Docker container because it wasn’t installed. This caused errors like ModuleNotFoundError: No module named 'flask'. 
-    After installing pytest (while in venv) and setting up the environment, the tests worked properly.
+
 
 Virtual Environment:
     - requests weren’t being recognized by Pylance due to missing packages in the virtual environment. 
@@ -88,6 +85,10 @@ Creating test files such as test_kitchenview.py, test_burgerorderer.py, test_men
     making debugging and maintaining the code simpler.
     - Also to keep tests organized. 
     - Good for Modular testing, ensuring scalability and easier updates as the project grows.
+
+Running tests in Docker:
+    - Pytest wasn’t working in the Docker container because it wasn’t installed. This caused errors like ModuleNotFoundError: No module named 'flask'. 
+    After installing pytest (while in venv) and setting up the environment, the tests worked properly.
 
 Using Debugger in Docker: 
     - I had to use pdb to debug the app in Docker. 
@@ -160,10 +161,10 @@ Refer to the configuration managment in the following file:
 
 ## Most used gitworkflow
 
-Refer to the Most Used Gitworkflow in the following file:
+Refers to the Most Used Gitworkflow in the following file:
 [Most used gitworkflow](/Reflections/Most.used.gitworkflow.txt)
 
 ## Most used gitworkflow
 
-Refer to reflection in the following file:
+Refers to reflection in the following file:
 [reflection](/Reflections/reflection.txt)

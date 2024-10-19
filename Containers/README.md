@@ -39,8 +39,8 @@ docker-compose up --build
 ## To Stop the containers:
 docker-compose down
 
-## after running python app.py, Find what IP you have and run it like this for example:
-curl -X POST http://<IP-HERE>:5000/order -H "Content-Type: application/json" -d '{"burger": "Dripping With Lard Heartstopper", "drink": "Cola"}'
+## after running "python app.py" in the terminal, Find what IP you have and run it like this for example:
+curl -X POST http://<IP-HERE>:5000/order -H "Content-Type: application/json" -d '{"burger": "drink": "Cola"}'
 
 
 

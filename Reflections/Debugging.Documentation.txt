@@ -1,4 +1,19 @@
-BurgerOrderer app.py
+I am on my own (no team) since no one answered my message in Canvas.
+Team Members:
+    - Franko Toma (frankozu)
+Project Homepage:
+    - https://github.com/frankozu/BurgerLounge
+
+Created test files such as test_kitchenview.py, test_burgerorderer.py, test_menustore.py:
+    - This ensures each part of the system (KitchenView, BurgerOrderer, MenuStore) has its own set of tests, 
+    making debugging and maintaining the code simpler.
+    - Also to keep tests organized. 
+    - Good for Modular testing, ensuring scalability and easier updates as the project grows.
+
+Running tests in Docker:
+    - Pytest wasn’t working in the Docker container because it wasn’t installed. This caused errors like ModuleNotFoundError: No module named 'flask'. 
+    After installing pytest (while in venv) and setting up the environment, the tests worked properly.
+    Also tested API routes using curl and a browser to verify connectivity, ensuring that the /order POST route accepts and processes requests correctly.
 
     Line 86:  Inside the place_order function, just after receiving the JSON request (order_data = request.get_json()). 
     The purpose was to inspect the incoming order data and ensure it's correctly parsed.
@@ -11,31 +26,28 @@ BurgerOrderer app.py
     
     # These breakpoints allowed me to follow the flow of the program as it handled the order and forwarded it to KitchenView.
 
-    Monitoring the Variables: 
-        request.data: Data coming from the client-side. 
+Step Through process using Pdb:
+    Debugger Commands:
+
+    Continue (c): After the breakpoint was set, I used the c command to proceed through the execution until the breakpoint
+    was hit.
+    Step Into (s): I used s to inspect the internal functions of Flask (e.g., get_json() method) to see how the JSON parsing was working 
+    and to verifythat no errors occured.
+    Step over (n): Used n to skip unnecessary details, like requests, so that I could focus on the main logic of my application. 
+    Step out (r): r was to return to my code once i verified every was working correctly.
+    
+Watchting the Variables: 
+        Watched request.data to ensure the client’s POST request was received correctly before JSON parsing.
             Value: {'burger': 'Dripping With Lard Heartstopper', 'drink': 'Cola'}
         - This was to ensure that the order data sent from the client was received correctly.
 
         order_data: The JSON data.
             Value: {'burger': 'Dripping With Lard Heartstopper', 'drink': 'Cola'}
         - REason was to ensure that the incomiung data from request.data is correctly parsed into the order_data dictionary. 
+        
         The "Response" after forwarding the order to KitchenView:
             Value: Response(status_code=200)
         - Reason was to ensure the order was forwarded without any issues, and to see if failures occured in communication between BurgerOrderer and KitchenView. 
-
-    Step-Through Process
-        Continue (c): After the breakpoint was set, I used the c command to proceed through the execution until the breakpoint
-        was hit.
-        Step Into (s): I used s to inspect the internal functions of Flask (e.g., get_json() method) to see how the JSON parsing was working 
-        and to verifythat no errors occured.
-        Step over (n): Used n to skip unnecessary details, like requests, so that I could focus on the main logic of my application. 
-        Step out (r): r was to return to my code once i verified every was working correctly.
-
-    Observing variable changes: Using pdb tp watch variable at various points in the function. 
-        Vefore JSON parsing: I watched the request.data to ensure it matched the client's POST request. 
-        After JSON parsing: I watched the order_data to ensure the JSON was parsed correctly and contained the ecpected values. 
-        Forwarding Order to KitchenView: I inspected tje response variable after sending the order to the KitchenView service.
-        I monitored the response status code to ensure the forward request was successfil. 
 
     Different Orders: 
         By submitting different orders I could veirify that the app correctly handled various type of input (e.g., different burger and drink combinations).
@@ -48,3 +60,8 @@ BurgerOrderer app.py
         The app handled valid and invalid requests as expected, with appropriate error messages when something went wrong.
     - What was difficult?: 
         Handling errors between BurgerOrderer and KitchenView. Had to carefully observe the response object and its status code. 
+
+    - What I Learned from Testing and Debugging:
+        I learned how to use pdb to pause and inspect the Flask app running inside Docker, which helped fix issues and ensure the application worked correctly.
+        Writing tests for key features (like placing orders and customizing them) with pytest allowed me to identify and fix issues early.
+        Debugging allowed me to get a better understanding of the interaction between BurgerOrderer and KitchenView, ensuring the system behaved as expected.
