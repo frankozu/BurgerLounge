@@ -55,6 +55,17 @@ Watchting the Variables:
         By submitting incomplete orders  (e.g., missing drink or burger) to observe the behavior.
             Result: The app gave errors and the order wasn't forwarded. 
 
+If a test fails:
+    If a test fails, I check the error message produced by pytest or the failure in the output. 
+    I rerun the tests in the container to ensure consistency and inspect the relevant part of the code (using pdb for debugging) to identify the cause. 
+    If the failure is related to a Docker configuration issue, I inspect the Docker logs for errors. 
+    For failed API tests using curl, I rerun the commands while checking logs in the Flask app.
+
+    The testing plan focused on key functions like placing orders, retrieving the menu, and communication between the BurgerOrderer and KitchenView services. 
+    I used pytest inside Docker containers and curl to test API endpoints. 
+    Each module was tested separately, covering both valid and invalid cases. 
+    Areas for improvement include more testing of edge cases, like missing menu items, and better error handling for database connection issues.
+
     - What went well?: 
         The pdb debugger allowed me to inspect incoming and outgoing data easily.
         The app handled valid and invalid requests as expected, with appropriate error messages when something went wrong.

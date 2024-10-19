@@ -42,6 +42,10 @@ Configuration management is used to:
 - Enable multiple people to collaborate on a project.
 - Track changes and maintain a history if the code. 
 
+* Added /menu and /order routes to flask app
+* Configured SQLite database connection
+* Fixed POST request issue for order route
+
 Most used git-workoverflow:
 
 **Cloning the repository**:

@@ -17,11 +17,14 @@ Project Summary:
     - Created docker-compose.yml to define the services for BurgerOrderer, KitchenView, and MenuStore.
     - Set up each service with its own port and volume mappings to share the database between containers.
 
+    The entire project can be run using the following command: docker-compose up --build
+    This command will build and start the containers for BurgerOrderer, KitchenView, and MenuStore, ensuring all services are running and connected.
+    
     Each Container:
 
     - BurgerOrderer: This part of the system is for customers. It lets them see the menu, place orders, 
     and customize their orders (like removing toppings). 
-    It gets menu items from the MenuStore and takes orders through a REST API.
+    The /menu route gets menu items from MenuStore, and the /order route processes orders and sends them to KitchenView.
     
     - MenuStore: This container handles storing and getting data about burgers, condiments, and drinks. 
     It uses an SQLite database and sends menu information to the BurgerOrderer container.
